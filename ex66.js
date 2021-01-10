@@ -34,12 +34,13 @@ startSet.onclick = function () {
 
 function displayTime(second) {
   var min = Math.floor(second / 60);
-  var sec = Math.floor(second % 60);
+  var sec = second % 60;
   time.innerHTML = `${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}`;
 }
 
 function endTime() {
-  heart.style = "display: inline";
+  time.innerHTML = "";
+  heart.style = "display: block";
   fetch("https://aws.random.cat/meow")
     .then(function (res) {
       return res.json();

@@ -93,8 +93,8 @@ img#img {
   left: 0;
   right: 0;
   margin: auto;
-  height: 300px;
-  width: 480px;
+  height: 100%;
+  width: auto;
   display: none;
 }
 
@@ -111,6 +111,12 @@ div {
   text-align: center;
 }
 
+#imgdiv {
+  position: fixed;
+  height: 300px;
+  width: 480px;
+}
+
 div#end {
   position: absolute;
   top: 0;
@@ -124,7 +130,7 @@ div#end {
 }
 
 .lds-heart {
-  display: inline-block;
+  display: block;
   position: relative;
   width: 80px;
   height: 80px;
@@ -133,8 +139,6 @@ div#end {
   display: none;
 }
 .lds-heart div {
-  top: 32px;
-  left: 400px;
   position: absolute;
   width: 32px;
   height: 32px;
