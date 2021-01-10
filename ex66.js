@@ -9,6 +9,8 @@ var heart = document.querySelector(".lds-heart");
 
 startSet.onclick = function () {
   var timeSecond = +seconds.value + +minute.value * 60;
+  minute.disabled = true; //blocks the input field
+  seconds.disabled = true; //blocks the input field
 
   displayTime(timeSecond);
   var countDown = setInterval(() => {
@@ -20,6 +22,9 @@ startSet.onclick = function () {
     } else {
       stopSet.onclick = function () {
         clearInterval(countDown);
+        minute.disabled = false;
+        seconds.disabled = false;
+        time.innerText = "00:00";
       };
     }
     pauseSet.onclick = function () {
@@ -38,19 +43,15 @@ function displayTime(second) {
   time.innerHTML = `${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}`;
 }
 
-function endTime() {
+async function endTime() {
   heart.style = "display: inline";
-  fetch("https://aws.random.cat/meow")
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (json) {
-      img.src = json.file;
-      img.onload = function () {
-        img.style = "display: inline";
-        heart.style = "display: none";
-      };
-    });
+  var res = await fetch("https://aws.random.cat/meow");
+  var json = await res.json();
+  img.src = json.file;
+  img.onload = function () {
+    img.style = "display: inline";
+    heart.style = "display: none";
+  };
 }
 
 // else if
