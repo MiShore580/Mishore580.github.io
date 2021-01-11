@@ -62,6 +62,7 @@ button#pause {
   text-align: center;
   border: 10px solid teal;
   font-size: 25px;
+  color: blue;
 }
 
 label.minute {
